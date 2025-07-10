@@ -1,0 +1,8 @@
+---
+Exploring AdventureWorks2022.HumanResources schema
+Switched to AdventureWorks2022 database.
+Tables in HumanResources:
+
+Record counts for HumanResources tables:
+
+Columns and data types for HumanResources tables:

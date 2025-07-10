@@ -66,3 +66,8 @@
 +defaults/win-64::tornado-6.5.1-py313h827c3e9_0
 +defaults/win-64::zeromq-4.3.5-hd77b12b_0
 # update specs: ['ipykernel']
+==> 2025-07-09 22:42:05 <==
+# cmd: c:\ProgramData\anaconda3\Scripts\conda-script.py install --prefix c:/Users/User/Documents/Agentic_AI/env pyodbc -y
+# conda version: 25.5.1
++defaults/win-64::pyodbc-5.2.0-py313h5da7b33_0
+# update specs: ['pyodbc']
