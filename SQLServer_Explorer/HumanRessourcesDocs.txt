@@ -1,0 +1,101 @@
+# AdventureWorks2022 HumanResources Schema Documentation
+
+## Overview
+This document summarizes the structure and key findings from the `HumanResources` schema in the `AdventureWorks2022` database, based on automated exploration and query results.
+
+## Tables in HumanResources
+- Shift
+- Department
+- Employee
+- EmployeeDepartmentHistory
+- EmployeePayHistory
+- JobCandidate
+
+## Table Columns
+### Shift
+- ShiftID: tinyint
+- Name: nvarchar
+- StartTime: time
+- EndTime: time
+- ModifiedDate: datetime
+
+### Department
+- DepartmentID: smallint
+- Name: nvarchar
+- GroupName: nvarchar
+- ModifiedDate: datetime
+
+### Employee
+- BusinessEntityID: int
+- NationalIDNumber: nvarchar
+- LoginID: nvarchar
+- OrganizationNode: hierarchyid
+- OrganizationLevel: smallint
+- JobTitle: nvarchar
+- BirthDate: date
+- MaritalStatus: nchar
+- Gender: nchar
+- HireDate: date
+- SalariedFlag: bit
+- VacationHours: smallint
+- SickLeaveHours: smallint
+- CurrentFlag: bit
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+### EmployeeDepartmentHistory
+- BusinessEntityID: int
+- DepartmentID: smallint
+- ShiftID: tinyint
+- StartDate: date
+- EndDate: date
+- ModifiedDate: datetime
+
+### EmployeePayHistory
+- BusinessEntityID: int
+- RateChangeDate: datetime
+- Rate: money
+- PayFrequency: tinyint
+- ModifiedDate: datetime
+
+### JobCandidate
+- JobCandidateID: int
+- BusinessEntityID: int
+- Resume: xml
+- ModifiedDate: datetime
+
+## Row Counts (as of extraction)
+- Department: 16
+- Employee: 290
+- EmployeeDepartmentHistory: 296
+- EmployeePayHistory: 316
+- JobCandidate: 13
+- Shift: 3
+
+## Primary Keys
+- Department: DepartmentID
+- Employee: BusinessEntityID
+- EmployeeDepartmentHistory: BusinessEntityID, DepartmentID, ShiftID, StartDate
+- EmployeePayHistory: BusinessEntityID, RateChangeDate
+- JobCandidate: JobCandidateID
+- Shift: ShiftID
+
+## Foreign Key Relationships
+- No foreign key relationships were found in the HumanResources schema.
+
+## Views
+- vEmployee
+- vEmployeeDepartment
+- vEmployeeDepartmentHistory
+- vJobCandidate
+- vJobCandidateEmployment
+- vJobCandidateEducation
+
+## Stored Procedures, Functions, Constraints, Triggers
+- No stored procedures, functions, unique constraints, default constraints, check constraints, or triggers were found in the HumanResources schema.
+
+## Notes
+- The schema contains both base tables and several views.
+- Some tables (such as EmployeeDepartmentHistory) have composite primary keys.
+- The lack of foreign key constraints may be due to the way the schema is designed or imported.
+- All findings are based on automated SQL queries and reflect the current state of the database.

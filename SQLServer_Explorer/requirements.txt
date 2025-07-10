@@ -1,0 +1,6 @@
+# Requirements for SQLServer_Explorer
+pyodbc
+pandas
+jupyter
+sqlalchemy
+ipython-sql

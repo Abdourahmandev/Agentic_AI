@@ -1,0 +1,249 @@
+---
+Exploring AdventureWorks2022.HumanResources schema
+Using fully qualified AdventureWorks2022 schema.
+
+Query 1: Tables in HumanResources schema:
+('Shift',)
+('Department',)
+('Employee',)
+('EmployeeDepartmentHistory',)
+('EmployeePayHistory',)
+('JobCandidate',)
+
+Query 2: Number of tables in HumanResources:
+(6,)
+
+Query 3: Columns in each HumanResources table:
+('vEmployee', 'BusinessEntityID', 'int')
+('vEmployee', 'Title', 'nvarchar')
+('vEmployee', 'FirstName', 'nvarchar')
+('vEmployee', 'MiddleName', 'nvarchar')
+('vEmployee', 'LastName', 'nvarchar')
+('vEmployee', 'Suffix', 'nvarchar')
+('vEmployee', 'JobTitle', 'nvarchar')
+('vEmployee', 'PhoneNumber', 'nvarchar')
+('vEmployee', 'PhoneNumberType', 'nvarchar')
+('vEmployee', 'EmailAddress', 'nvarchar')
+('vEmployee', 'EmailPromotion', 'int')
+('vEmployee', 'AddressLine1', 'nvarchar')
+('vEmployee', 'AddressLine2', 'nvarchar')
+('vEmployee', 'City', 'nvarchar')
+('vEmployee', 'StateProvinceName', 'nvarchar')
+('vEmployee', 'PostalCode', 'nvarchar')
+('vEmployee', 'CountryRegionName', 'nvarchar')
+('vEmployee', 'AdditionalContactInfo', 'xml')
+('vEmployeeDepartment', 'BusinessEntityID', 'int')
+('vEmployeeDepartment', 'Title', 'nvarchar')
+('vEmployeeDepartment', 'FirstName', 'nvarchar')
+('vEmployeeDepartment', 'MiddleName', 'nvarchar')
+('vEmployeeDepartment', 'LastName', 'nvarchar')
+('vEmployeeDepartment', 'Suffix', 'nvarchar')
+('vEmployeeDepartment', 'JobTitle', 'nvarchar')
+('vEmployeeDepartment', 'Department', 'nvarchar')
+('vEmployeeDepartment', 'GroupName', 'nvarchar')
+('vEmployeeDepartment', 'StartDate', 'date')
+('vEmployeeDepartmentHistory', 'BusinessEntityID', 'int')
+('vEmployeeDepartmentHistory', 'Title', 'nvarchar')
+('vEmployeeDepartmentHistory', 'FirstName', 'nvarchar')
+('vEmployeeDepartmentHistory', 'MiddleName', 'nvarchar')
+('vEmployeeDepartmentHistory', 'LastName', 'nvarchar')
+('vEmployeeDepartmentHistory', 'Suffix', 'nvarchar')
+('vEmployeeDepartmentHistory', 'Shift', 'nvarchar')
+('vEmployeeDepartmentHistory', 'Department', 'nvarchar')
+('vEmployeeDepartmentHistory', 'GroupName', 'nvarchar')
+('vEmployeeDepartmentHistory', 'StartDate', 'date')
+('vEmployeeDepartmentHistory', 'EndDate', 'date')
+('vJobCandidate', 'JobCandidateID', 'int')
+('vJobCandidate', 'BusinessEntityID', 'int')
+('vJobCandidate', 'Name.Prefix', 'nvarchar')
+('vJobCandidate', 'Name.First', 'nvarchar')
+('vJobCandidate', 'Name.Middle', 'nvarchar')
+('vJobCandidate', 'Name.Last', 'nvarchar')
+('vJobCandidate', 'Name.Suffix', 'nvarchar')
+('vJobCandidate', 'Skills', 'nvarchar')
+('vJobCandidate', 'Addr.Type', 'nvarchar')
+('vJobCandidate', 'Addr.Loc.CountryRegion', 'nvarchar')
+('vJobCandidate', 'Addr.Loc.State', 'nvarchar')
+('vJobCandidate', 'Addr.Loc.City', 'nvarchar')
+('vJobCandidate', 'Addr.PostalCode', 'nvarchar')
+('vJobCandidate', 'EMail', 'nvarchar')
+('vJobCandidate', 'WebSite', 'nvarchar')
+('vJobCandidate', 'ModifiedDate', 'datetime')
+('vJobCandidateEmployment', 'JobCandidateID', 'int')
+('vJobCandidateEmployment', 'Emp.StartDate', 'datetime')
+('vJobCandidateEmployment', 'Emp.EndDate', 'datetime')
+('vJobCandidateEmployment', 'Emp.OrgName', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.JobTitle', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.Responsibility', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.FunctionCategory', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.IndustryCategory', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.Loc.CountryRegion', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.Loc.State', 'nvarchar')
+('vJobCandidateEmployment', 'Emp.Loc.City', 'nvarchar')
+('vJobCandidateEducation', 'JobCandidateID', 'int')
+('vJobCandidateEducation', 'Edu.Level', 'nvarchar')
+('vJobCandidateEducation', 'Edu.StartDate', 'datetime')
+('vJobCandidateEducation', 'Edu.EndDate', 'datetime')
+('vJobCandidateEducation', 'Edu.Degree', 'nvarchar')
+('vJobCandidateEducation', 'Edu.Major', 'nvarchar')
+('vJobCandidateEducation', 'Edu.Minor', 'nvarchar')
+('vJobCandidateEducation', 'Edu.GPA', 'nvarchar')
+('vJobCandidateEducation', 'Edu.GPAScale', 'nvarchar')
+('vJobCandidateEducation', 'Edu.School', 'nvarchar')
+('vJobCandidateEducation', 'Edu.Loc.CountryRegion', 'nvarchar')
+('vJobCandidateEducation', 'Edu.Loc.State', 'nvarchar')
+('vJobCandidateEducation', 'Edu.Loc.City', 'nvarchar')
+('Shift', 'ShiftID', 'tinyint')
+('Shift', 'Name', 'nvarchar')
+('Shift', 'StartTime', 'time')
+('Shift', 'EndTime', 'time')
+('Shift', 'ModifiedDate', 'datetime')
+('Department', 'DepartmentID', 'smallint')
+('Department', 'Name', 'nvarchar')
+('Department', 'GroupName', 'nvarchar')
+('Department', 'ModifiedDate', 'datetime')
+('Employee', 'BusinessEntityID', 'int')
+('Employee', 'NationalIDNumber', 'nvarchar')
+('Employee', 'LoginID', 'nvarchar')
+('Employee', 'OrganizationNode', 'hierarchyid')
+('Employee', 'OrganizationLevel', 'smallint')
+('Employee', 'JobTitle', 'nvarchar')
+('Employee', 'BirthDate', 'date')
+('Employee', 'MaritalStatus', 'nchar')
+('Employee', 'Gender', 'nchar')
+('Employee', 'HireDate', 'date')
+('Employee', 'SalariedFlag', 'bit')
+('Employee', 'VacationHours', 'smallint')
+('Employee', 'SickLeaveHours', 'smallint')
+('Employee', 'CurrentFlag', 'bit')
+('Employee', 'rowguid', 'uniqueidentifier')
+('Employee', 'ModifiedDate', 'datetime')
+('EmployeeDepartmentHistory', 'BusinessEntityID', 'int')
+('EmployeeDepartmentHistory', 'DepartmentID', 'smallint')
+('EmployeeDepartmentHistory', 'ShiftID', 'tinyint')
+('EmployeeDepartmentHistory', 'StartDate', 'date')
+('EmployeeDepartmentHistory', 'EndDate', 'date')
+('EmployeeDepartmentHistory', 'ModifiedDate', 'datetime')
+('EmployeePayHistory', 'BusinessEntityID', 'int')
+('EmployeePayHistory', 'RateChangeDate', 'datetime')
+('EmployeePayHistory', 'Rate', 'money')
+('EmployeePayHistory', 'PayFrequency', 'tinyint')
+('EmployeePayHistory', 'ModifiedDate', 'datetime')
+('JobCandidate', 'JobCandidateID', 'int')
+('JobCandidate', 'BusinessEntityID', 'int')
+('JobCandidate', 'Resume', 'xml')
+('JobCandidate', 'ModifiedDate', 'datetime')
+
+Query 4: Primary keys in HumanResources:
+('Department', 'DepartmentID')
+('Employee', 'BusinessEntityID')
+('EmployeeDepartmentHistory', 'BusinessEntityID')
+('EmployeeDepartmentHistory', 'DepartmentID')
+('EmployeeDepartmentHistory', 'ShiftID')
+('EmployeeDepartmentHistory', 'StartDate')
+('EmployeePayHistory', 'BusinessEntityID')
+('EmployeePayHistory', 'RateChangeDate')
+('JobCandidate', 'JobCandidateID')
+('Shift', 'ShiftID')
+
+Query 5: Foreign keys in HumanResources:
+No results.
+
+Query 6: Indexes in HumanResources:
+No results.
+
+Query 7: Row count for each table:
+('Department', 16)
+('Employee', 290)
+('EmployeeDepartmentHistory', 296)
+('EmployeePayHistory', 316)
+('JobCandidate', 13)
+('Shift', 3)
+
+Query 8: Unique constraints in HumanResources:
+No results.
+
+Query 9: Default constraints in HumanResources:
+No results.
+
+Query 10: Check constraints in HumanResources:
+No results.
+
+Query 11: Triggers in HumanResources:
+No results.
+
+Query 12: Views in HumanResources:
+('vEmployee',)
+('vEmployeeDepartment',)
+('vEmployeeDepartmentHistory',)
+('vJobCandidate',)
+('vJobCandidateEmployment',)
+('vJobCandidateEducation',)
+
+Query 13: Stored procedures in HumanResources:
+No results.
+
+Query 14: Functions in HumanResources:
+No results.
+
+Query 15: Identity columns in HumanResources:
+No results.
+
+---
+Columns for each table in HumanResources:
+
+Table: Shift
+- ShiftID: tinyint
+- Name: nvarchar
+- StartTime: time
+- EndTime: time
+- ModifiedDate: datetime
+
+Table: Department
+- DepartmentID: smallint
+- Name: nvarchar
+- GroupName: nvarchar
+- ModifiedDate: datetime
+
+Table: Employee
+- BusinessEntityID: int
+- NationalIDNumber: nvarchar
+- LoginID: nvarchar
+- OrganizationNode: hierarchyid
+- OrganizationLevel: smallint
+- JobTitle: nvarchar
+- BirthDate: date
+- MaritalStatus: nchar
+- Gender: nchar
+- HireDate: date
+- SalariedFlag: bit
+- VacationHours: smallint
+- SickLeaveHours: smallint
+- CurrentFlag: bit
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: EmployeeDepartmentHistory
+- BusinessEntityID: int
+- DepartmentID: smallint
+- ShiftID: tinyint
+- StartDate: date
+- EndDate: date
+- ModifiedDate: datetime
+
+Table: EmployeePayHistory
+- BusinessEntityID: int
+- RateChangeDate: datetime
+- Rate: money
+- PayFrequency: tinyint
+- ModifiedDate: datetime
+
+Table: JobCandidate
+- JobCandidateID: int
+- BusinessEntityID: int
+- Resume: xml
+- ModifiedDate: datetime
+
+---
+Foreign key relationships in HumanResources:
+No foreign key relationships found.

@@ -1,20 +1,22 @@
 import pyodbc
 
-def run_sql_query(query, server='localhost', database='master', username=None, password=None):
+# Default connection settings for SQL Server authentication
+DEFAULT_SERVER = "localhost"
+DEFAULT_DATABASE = "master"
+DEFAULT_USERNAME = "sa"
+DEFAULT_PASSWORD = "Rass1987"
+
+def run_sql_query(query):
     """
     Connects to a SQL Server instance and executes the given SQL query.
     Returns the results as a list of tuples.
     """
     conn_str = (
         f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-        f"SERVER={server};"
-        f"DATABASE={database};"
+        f"SERVER={DEFAULT_SERVER};"
+        f"DATABASE={DEFAULT_DATABASE};"
+        f"UID={DEFAULT_USERNAME};PWD={DEFAULT_PASSWORD};"
     )
-    if username and password:
-        conn_str += f"UID={username};PWD={password};"
-    else:
-        conn_str += "Trusted_Connection=yes;"
-    
     with pyodbc.connect(conn_str) as conn:
         cursor = conn.cursor()
         cursor.execute(query)
