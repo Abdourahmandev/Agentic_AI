@@ -20,26 +20,63 @@ Command: conda activate ./env
 # Agentic_AI Project
 
 ## Overview
-This project explores the `AdventureWorks2022` SQL Server database, focusing on the `HumanResources` schema. The project includes automated scripts for schema exploration, context export, and documentation generation.
+Agentic_AI is a step-by-step guide for building, exploring, and documenting agentic AI systems and SQL Server databases. The project demonstrates best practices for environment setup, dependency management, SQL schema exploration, and reproducible documentation.
 
-## Recent Updates
-- Added `HumanRessourcesDocs.txt` in `SQLServer_Explorer` with detailed documentation of the HumanResources schema.
-- Automated extraction of table names, columns, row counts, primary keys, and views.
-- Confirmed that no foreign key relationships, stored procedures, functions, or triggers exist in the HumanResources schema.
-- All results are exported to `context.txt` for reproducibility.
+## Quick Start
 
-## Directory Structure
-- `SQLServer_Explorer/`
-  - `test_run_sql.py`: Script to run SQL queries and export results.
-  - `context.txt`: Stores all extracted schema and data context.
-  - `HumanRessourcesDocs.txt`: Human-readable documentation of the HumanResources schema.
+1. **Clone the Repository**
+   ```sh
+   git clone <your-repo-url>
+   ```
+2. **Create and Activate a Conda Environment**
+   ```sh
+   conda create -p ./env python
+   conda activate ./env
+   ```
+3. **Install Dependencies**
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. **Set Up SQL Server Access**
+   - Ensure you have access to the AdventureWorks2022 database.
+   - Update connection details in `run_sql.py` if needed.
+5. **Explore the Database**
+   ```sh
+   python SQLServer_Explorer/test_run_sql.py
+   ```
+   - Results are saved in `SQLServer_Explorer/context.txt`.
+   - Human-readable documentation is generated in `HumanRessourcesDocs.txt`.
+6. **Review Documentation**
+   - See `README.md` for project overview and structure.
+   - See `HumanRessourcesDocs.txt` for schema documentation and analysis.
+   - See `context.txt` for extracted schema, data summaries, and analysis results.
 
-## How to Reproduce
-1. Ensure you have access to the `AdventureWorks2022` database on SQL Server.
-2. Run `test_run_sql.py` to extract schema information and update `context.txt`.
-3. Review `HumanRessourcesDocs.txt` for a summary of the schema.
+## How to Use context.txt
+- Reference `context.txt` for database structure, table meanings, and data patterns.
+- Append new findings or summaries by running or modifying the provided scripts.
+- For custom analysis, add your own summaries or query results to `context.txt` for reproducibility and sharing.
 
-## Notes
-- All scripts are designed to be idempotent and append new findings without overwriting previous context.
-- For further schema exploration, modify `test_run_sql.py` with new queries as needed.
+## How to Prompt GitHub Copilot for Best Results
+- Be specific: Clearly state your goal, the table or schema you want to explore, and the type of analysis you need.
+- Reference context: Mention relevant details from `context.txt` or documentation files to give Copilot the right context.
+- Ask for summaries: Request concise explanations, data patterns, or code snippets for your use case.
+- Example prompt: "Summarize the Employee table in HumanResources and suggest useful analytics."
+- For code: Ask for step-by-step scripts, query examples, or automation tips.
+
+## Version Control Best Practices
+- Do not commit the `env` folder. Add `env/` to `.gitignore`.
+- Use `requirements.txt` for dependencies.
+- Commit and push changes regularly:
+   ```sh
+   git add .
+   git commit -m "Update"
+   git push
+   ```
+
+## Additional Notes
+- All scripts are designed to be reproducible and append new findings without overwriting previous context.
+- You can modify or extend the scripts to explore other schemas or run custom queries.
+
+---
+For more details, see the `Documentation.md` and `HumanRessourcesDocs.txt` files.
 

@@ -247,3 +247,93 @@ Table: JobCandidate
 ---
 Foreign key relationships in HumanResources:
 No foreign key relationships found.
+
+---
+Exploring data in HumanResources.Shift table:
+ShiftID | Name | StartTime | EndTime | ModifiedDate
+1 | Day | 07:00:00 | 15:00:00 | 2008-04-30 00:00:00
+2 | Evening | 15:00:00 | 23:00:00 | 2008-04-30 00:00:00
+3 | Night | 23:00:00 | 07:00:00 | 2008-04-30 00:00:00
+
+Column meanings:
+- ShiftID: Unique identifier for each shift.
+- Name: Name of the shift (e.g., Day, Night).
+- StartTime: Time the shift starts.
+- EndTime: Time the shift ends.
+- ModifiedDate: Last modification date.
+
+---
+Exploring data in HumanResources.Department table:
+DepartmentID | Name | GroupName | ModifiedDate
+1 | Engineering | Research and Development | 2008-04-30 00:00:00
+2 | Tool Design | Research and Development | 2008-04-30 00:00:00
+3 | Sales | Sales and Marketing | 2008-04-30 00:00:00
+4 | Marketing | Sales and Marketing | 2008-04-30 00:00:00
+5 | Purchasing | Inventory Management | 2008-04-30 00:00:00
+6 | Research and Development | Research and Development | 2008-04-30 00:00:00
+7 | Production | Manufacturing | 2008-04-30 00:00:00
+8 | Production Control | Manufacturing | 2008-04-30 00:00:00
+9 | Human Resources | Executive General and Administration | 2008-04-30 00:00:00
+10 | Finance | Executive General and Administration | 2008-04-30 00:00:00
+11 | Information Services | Executive General and Administration | 2008-04-30 00:00:00
+12 | Document Control | Quality Assurance | 2008-04-30 00:00:00
+13 | Quality Assurance | Quality Assurance | 2008-04-30 00:00:00
+14 | Facilities and Maintenance | Executive General and Administration | 2008-04-30 00:00:00
+15 | Shipping and Receiving | Inventory Management | 2008-04-30 00:00:00
+16 | Executive | Executive General and Administration | 2008-04-30 00:00:00
+
+Column meanings:
+- DepartmentID: Unique identifier for each department.
+- Name: Name of the department.
+- GroupName: Group to which the department belongs.
+- ModifiedDate: Last modification date.
+
+---
+Exploring data in HumanResources.Employee table:
+No data found in Employee table.
+
+---
+Summary of HumanResources.Employee table:
+The Employee table contains information about each employee in the organization. Key fields include:
+- BusinessEntityID: Unique identifier for each employee.
+- NationalIDNumber: Employee national identification number.
+- LoginID: Employee login credentials.
+- OrganizationNode/OrganizationLevel: Used to represent the employee’s position in the company hierarchy.
+- JobTitle: The job title held by the employee.
+- BirthDate, MaritalStatus, Gender: Demographic information.
+- HireDate: Date the employee was hired.
+- SalariedFlag: Indicates if the employee is salaried.
+- VacationHours, SickLeaveHours: Tracks leave balances.
+- CurrentFlag: Indicates if the employee is currently employed.
+- rowguid: Unique row identifier for replication.
+- ModifiedDate: Last time the record was updated.
+This table is central for HR analytics, workforce planning, and organizational structure analysis.
+
+---
+Summary of HumanResources.EmployeeDepartmentHistory table:
+This table tracks the history of employee assignments to departments and shifts. Key fields:
+- BusinessEntityID: Employee identifier.
+- DepartmentID: Department identifier.
+- ShiftID: Shift identifier.
+- StartDate, EndDate: Assignment period.
+- ModifiedDate: Last update.
+Useful for analyzing employee movement, departmental changes, and shift assignments over time.
+
+---
+Summary of HumanResources.EmployeePayHistory table:
+This table records changes in employee pay rates. Key fields:
+- BusinessEntityID: Employee identifier.
+- RateChangeDate: Date of pay change.
+- Rate: Pay rate.
+- PayFrequency: Frequency of pay (e.g., monthly, biweekly).
+- ModifiedDate: Last update.
+Useful for compensation analysis, payroll auditing, and tracking pay progression.
+
+---
+Summary of HumanResources.JobCandidate table:
+This table stores information about job candidates. Key fields:
+- JobCandidateID: Unique candidate identifier.
+- BusinessEntityID: Associated employee (if hired).
+- Resume: Candidate resume (XML format).
+- ModifiedDate: Last update.
+Useful for recruitment analytics, candidate tracking, and resume management.

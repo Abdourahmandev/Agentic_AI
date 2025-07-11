@@ -1,35 +1,67 @@
 # Agentic_AI Documentation
 
 ## Project Overview
-Agentic_AI is a repository dedicated to learning how to build and deploy Agentic AI systems using LangChain and LangGraph. The project demonstrates best practices for environment setup, dependency management, and workflow for agentic AI development.
+Agentic_AI is a step-by-step guide for building and exploring agentic AI systems and SQL Server databases. This project demonstrates best practices for environment setup, dependency management, SQL schema exploration, and documentation.
 
-## Environment Setup
+## Step-by-Step Tutorial
 
-### Creating a Conda Environment in the Project Directory
-To ensure reproducibility and isolation, create a conda environment inside the project directory:
-
+### 1. Clone the Repository
+Clone the project to your local machine:
 ```sh
-conda create -p ./env python
+git clone <your-repo-url>
 ```
 
-- This will create a new environment in the `env` folder within your project directory.
-
-### Activating the Environment
-
+### 2. Create and Activate a Conda Environment
+Create a new environment inside the project directory for isolation and reproducibility:
 ```sh
+conda create -p ./env python
 conda activate ./env
 ```
 
-- Use this command to activate the environment for development and running scripts.
+### 3. Install Dependencies
+Install required Python packages:
+```sh
+pip install -r requirements.txt
+```
 
-## Best Practices
-- **Do not commit the `env` folder to version control.** Add `env/` to your `.gitignore` file.
-- Use `requirements.txt` or `environment.yml` to specify dependencies for easy setup by collaborators.
+### 4. Set Up SQL Server Access
+Ensure you have access to the AdventureWorks2022 database on your SQL Server instance. Update connection details in `run_sql.py` if needed.
 
-## Next Steps
-- Install required packages (e.g., LangChain, LangGraph) after activating the environment.
-- Follow the README for further instructions on building and deploying agentic AI workflows.
+### 5. Explore the Database
+Run the provided scripts to extract schema and data context:
+```sh
+python SQLServer_Explorer/test_run_sql.py
+```
+- Results will be saved in `SQLServer_Explorer/context.txt`.
+- Human-readable documentation is generated in `HumanRessourcesDocs.txt`.
+
+### 6. Review Documentation
+- See `README.md` for project overview and structure.
+- See `HumanRessourcesDocs.txt` for schema documentation and analysis.
+
+### 7. Version Control Best Practices
+- Do not commit the `env` folder. Add `env/` to `.gitignore`.
+- Use `requirements.txt` for dependencies.
+- Commit and push changes regularly:
+```sh
+git add .
+git commit -m "Update"
+git push
+```
+
+## How to Use context.txt
+- The `context.txt` file contains all extracted schema, data summaries, and analysis results.
+- Use it as a reference for database structure, table meanings, and data patterns.
+- You can append new findings or summaries to this file by running or modifying the provided scripts.
+- For custom analysis, add your own summaries or query results to `context.txt` for reproducibility and sharing.
+
+## How to Prompt GitHub Copilot for Best Results
+- Be specific: Clearly state your goal, the table or schema you want to explore, and the type of analysis you need.
+- Reference context: Mention relevant details from `context.txt` or documentation files to give Copilot the right context.
+- Ask for summaries: Request concise explanations, data patterns, or code snippets for your use case.
+- Example prompt: "Summarize the Employee table in HumanResources and suggest useful analytics."
+- For code: Ask for step-by-step scripts, query examples, or automation tips.
 
 ---
-For more details, see the `README.md` file.
+For more details, see the `README.md` and `HumanRessourcesDocs.txt` files.
 

@@ -101,3 +101,130 @@ try:
             safe_write(str(row))
 except Exception as e:
     safe_write(f'ERROR: {e}')
+
+safe_write('\n---\nExploring data in HumanResources.Shift table:')
+
+# Get all data from Shift table
+try:
+    query = "SELECT * FROM AdventureWorks2022.HumanResources.Shift;"
+    results = run_sql_query(query)
+    if not results:
+        safe_write('No data found in Shift table.')
+    else:
+        # Write column headers
+        col_query = "SELECT COLUMN_NAME FROM AdventureWorks2022.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'HumanResources' AND TABLE_NAME = 'Shift';"
+        columns = [col[0] for col in run_sql_query(col_query)]
+        safe_write(' | '.join(columns))
+        for row in results:
+            safe_write(' | '.join(str(item) for item in row))
+        # Optionally, summarize the meaning of each column
+        safe_write('\nColumn meanings:')
+        safe_write('- ShiftID: Unique identifier for each shift.')
+        safe_write('- Name: Name of the shift (e.g., Day, Night).')
+        safe_write('- StartTime: Time the shift starts.')
+        safe_write('- EndTime: Time the shift ends.')
+        safe_write('- ModifiedDate: Last modification date.')
+except Exception as e:
+    safe_write(f'ERROR: {e}')
+
+safe_write('\n---\nExploring data in HumanResources.Department table:')
+
+# Get all data from Department table
+try:
+    query = "SELECT * FROM AdventureWorks2022.HumanResources.Department;"
+    results = run_sql_query(query)
+    if not results:
+        safe_write('No data found in Department table.')
+    else:
+        # Write column headers
+        col_query = "SELECT COLUMN_NAME FROM AdventureWorks2022.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'HumanResources' AND TABLE_NAME = 'Department';"
+        columns = [col[0] for col in run_sql_query(col_query)]
+        safe_write(' | '.join(columns))
+        for row in results:
+            safe_write(' | '.join(str(item) for item in row))
+        # Optionally, summarize the meaning of each column
+        safe_write('\nColumn meanings:')
+        safe_write('- DepartmentID: Unique identifier for each department.')
+        safe_write('- Name: Name of the department.')
+        safe_write('- GroupName: Group to which the department belongs.')
+        safe_write('- ModifiedDate: Last modification date.')
+except Exception as e:
+    safe_write(f'ERROR: {e}')
+
+safe_write('\n---\nExploring data in HumanResources.Employee table:')
+
+# Get all data from Employee table
+try:
+    query = "SELECT * FROM AdventureWorks2022.HumanResources.Employee;"
+    results = run_sql_query(query)
+    if not results:
+        safe_write('No data found in Employee table.')
+    else:
+        # Write column headers
+        col_query = "SELECT COLUMN_NAME FROM AdventureWorks2022.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'HumanResources' AND TABLE_NAME = 'Employee';"
+        columns = [col[0] for col in run_sql_query(col_query)]
+        safe_write(' | '.join(columns))
+        for row in results:
+            safe_write(' | '.join(str(item) for item in row))
+        # Optionally, summarize the meaning of each column
+        safe_write('\nColumn meanings:')
+        safe_write('- BusinessEntityID: Unique identifier for each employee.')
+        safe_write('- NationalIDNumber: National ID number of the employee.')
+        safe_write('- LoginID: Login ID for the employee.')
+        safe_write('- OrganizationNode: Hierarchy node for organization structure.')
+        safe_write('- OrganizationLevel: Level in the organization hierarchy.')
+        safe_write('- JobTitle: Employee job title.')
+        safe_write('- BirthDate: Date of birth.')
+        safe_write('- MaritalStatus: Marital status.')
+        safe_write('- Gender: Gender of the employee.')
+        safe_write('- HireDate: Date of hire.')
+        safe_write('- SalariedFlag: Whether the employee is salaried.')
+        safe_write('- VacationHours: Number of vacation hours.')
+        safe_write('- SickLeaveHours: Number of sick leave hours.')
+        safe_write('- CurrentFlag: Whether the employee is currently employed.')
+        safe_write('- rowguid: Unique identifier for the row.')
+        safe_write('- ModifiedDate: Last modification date.')
+except Exception as e:
+    safe_write(f'ERROR: {e}')
+
+safe_write('\n---\nSummary of HumanResources.Employee table:')
+safe_write('The Employee table contains information about each employee in the organization. Key fields include:')
+safe_write('- BusinessEntityID: Unique identifier for each employee.')
+safe_write('- NationalIDNumber: Employee national identification number.')
+safe_write('- LoginID: Employee login credentials.')
+safe_write('- OrganizationNode/OrganizationLevel: Used to represent the employee’s position in the company hierarchy.')
+safe_write('- JobTitle: The job title held by the employee.')
+safe_write('- BirthDate, MaritalStatus, Gender: Demographic information.')
+safe_write('- HireDate: Date the employee was hired.')
+safe_write('- SalariedFlag: Indicates if the employee is salaried.')
+safe_write('- VacationHours, SickLeaveHours: Tracks leave balances.')
+safe_write('- CurrentFlag: Indicates if the employee is currently employed.')
+safe_write('- rowguid: Unique row identifier for replication.')
+safe_write('- ModifiedDate: Last time the record was updated.')
+safe_write('This table is central for HR analytics, workforce planning, and organizational structure analysis.')
+
+safe_write('\n---\nSummary of HumanResources.EmployeeDepartmentHistory table:')
+safe_write('This table tracks the history of employee assignments to departments and shifts. Key fields:')
+safe_write('- BusinessEntityID: Employee identifier.')
+safe_write('- DepartmentID: Department identifier.')
+safe_write('- ShiftID: Shift identifier.')
+safe_write('- StartDate, EndDate: Assignment period.')
+safe_write('- ModifiedDate: Last update.')
+safe_write('Useful for analyzing employee movement, departmental changes, and shift assignments over time.')
+
+safe_write('\n---\nSummary of HumanResources.EmployeePayHistory table:')
+safe_write('This table records changes in employee pay rates. Key fields:')
+safe_write('- BusinessEntityID: Employee identifier.')
+safe_write('- RateChangeDate: Date of pay change.')
+safe_write('- Rate: Pay rate.')
+safe_write('- PayFrequency: Frequency of pay (e.g., monthly, biweekly).')
+safe_write('- ModifiedDate: Last update.')
+safe_write('Useful for compensation analysis, payroll auditing, and tracking pay progression.')
+
+safe_write('\n---\nSummary of HumanResources.JobCandidate table:')
+safe_write('This table stores information about job candidates. Key fields:')
+safe_write('- JobCandidateID: Unique candidate identifier.')
+safe_write('- BusinessEntityID: Associated employee (if hired).')
+safe_write('- Resume: Candidate resume (XML format).')
+safe_write('- ModifiedDate: Last update.')
+safe_write('Useful for recruitment analytics, candidate tracking, and resume management.')
