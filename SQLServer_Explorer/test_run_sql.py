@@ -228,3 +228,88 @@ safe_write('- BusinessEntityID: Associated employee (if hired).')
 safe_write('- Resume: Candidate resume (XML format).')
 safe_write('- ModifiedDate: Last update.')
 safe_write('Useful for recruitment analytics, candidate tracking, and resume management.')
+
+# --- Technical Exploration: Person Schema ---
+safe_write('\n---\nExploring AdventureWorks2022.Person schema:')
+
+# 1. List all tables in Person schema
+try:
+    query_tables = "SELECT TABLE_NAME FROM AdventureWorks2022.INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'Person' AND TABLE_TYPE = 'BASE TABLE';"
+    tables = run_sql_query(query_tables)
+    table_names = [t[0] for t in tables]
+    safe_write('Tables in Person schema:')
+    for t in table_names:
+        safe_write(f'- {t}')
+except Exception as e:
+    safe_write(f'ERROR listing tables: {e}')
+
+# 2. List columns and data types for each table
+safe_write('\nColumns and data types for Person tables:')
+for table in table_names:
+    safe_write(f'\nTable: {table}')
+    try:
+        col_query = f"SELECT COLUMN_NAME, DATA_TYPE FROM AdventureWorks2022.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'Person' AND TABLE_NAME = '{table}';"
+        cols = run_sql_query(col_query)
+        for col, dtype in cols:
+            safe_write(f'- {col}: {dtype}')
+    except Exception as e:
+        safe_write(f'ERROR: {e}')
+
+# 3. Row count for each table
+safe_write('\nRow counts for Person tables:')
+for table in table_names:
+    try:
+        count_query = f"SELECT COUNT(*) FROM AdventureWorks2022.Person.[{table}];"
+        count = run_sql_query(count_query)[0][0]
+        safe_write(f'- {table}: {count} rows')
+    except Exception as e:
+        safe_write(f'- {table}: ERROR {e}')
+
+# 4. Primary keys for each table
+safe_write('\nPrimary keys for Person tables:')
+try:
+    pk_query = """
+    SELECT KU.TABLE_NAME, KU.COLUMN_NAME
+    FROM AdventureWorks2022.INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS TC
+    JOIN AdventureWorks2022.INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS KU
+      ON TC.CONSTRAINT_TYPE = 'PRIMARY KEY' AND TC.CONSTRAINT_NAME = KU.CONSTRAINT_NAME
+    WHERE KU.TABLE_SCHEMA = 'Person';
+    """
+    pks = run_sql_query(pk_query)
+    for table, col in pks:
+        safe_write(f'- {table}: {col}')
+except Exception as e:
+    safe_write(f'ERROR listing primary keys: {e}')
+
+# 5. Foreign keys for each table
+safe_write('\nForeign key relationships in Person:')
+try:
+    fk_query = '''
+    SELECT OBJECT_NAME(f.parent_object_id) AS TableName,
+           COL_NAME(fc.parent_object_id,fc.parent_column_id) AS ColumnName,
+           OBJECT_NAME (f.referenced_object_id) AS RefTableName,
+           COL_NAME(fc.referenced_object_id,fc.referenced_column_id) AS RefColumnName
+    FROM AdventureWorks2022.sys.foreign_keys AS f
+    INNER JOIN AdventureWorks2022.sys.foreign_key_columns AS fc
+        ON f.object_id = fc.constraint_object_id
+    WHERE OBJECT_SCHEMA_NAME(f.parent_object_id) = 'Person';
+    '''
+    fks = run_sql_query(fk_query)
+    if not fks:
+        safe_write('No foreign key relationships found.')
+    else:
+        for row in fks:
+            safe_write(str(row))
+except Exception as e:
+    safe_write(f'ERROR: {e}')
+
+# --- Data Patterns: Person Schema ---
+# For brevity, summarize patterns after technical exploration
+safe_write('\n---\nPerson schema data patterns and insights:')
+safe_write('The Person schema contains tables for individuals, addresses, contact info, and relationships. Typical patterns include:')
+safe_write('- Central Person table with unique identifiers and demographic info.')
+safe_write('- Address and contact tables linked via foreign keys.')
+safe_write('- Many-to-many relationships for email, phone, and address usage.')
+safe_write('- Row counts indicate data volume and table importance.')
+safe_write('- Primary and foreign keys support referential integrity and complex queries.')
+safe_write('This schema is ideal for customer, contact, and relationship management analytics.')
