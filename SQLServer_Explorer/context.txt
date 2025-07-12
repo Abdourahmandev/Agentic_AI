@@ -337,3 +337,168 @@ This table stores information about job candidates. Key fields:
 - Resume: Candidate resume (XML format).
 - ModifiedDate: Last update.
 Useful for recruitment analytics, candidate tracking, and resume management.
+
+---
+Exploring AdventureWorks2022.Person schema:
+Tables in Person schema:
+- PersonPhone
+- PhoneNumberType
+- Address
+- AddressType
+- StateProvince
+- BusinessEntity
+- BusinessEntityAddress
+- BusinessEntityContact
+- ContactType
+- CountryRegion
+- EmailAddress
+- Password
+- Person
+
+Columns and data types for Person tables:
+
+Table: PersonPhone
+- BusinessEntityID: int
+- PhoneNumber: nvarchar
+- PhoneNumberTypeID: int
+- ModifiedDate: datetime
+
+Table: PhoneNumberType
+- PhoneNumberTypeID: int
+- Name: nvarchar
+- ModifiedDate: datetime
+
+Table: Address
+- AddressID: int
+- AddressLine1: nvarchar
+- AddressLine2: nvarchar
+- City: nvarchar
+- StateProvinceID: int
+- PostalCode: nvarchar
+- SpatialLocation: geography
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: AddressType
+- AddressTypeID: int
+- Name: nvarchar
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: StateProvince
+- StateProvinceID: int
+- StateProvinceCode: nchar
+- CountryRegionCode: nvarchar
+- IsOnlyStateProvinceFlag: bit
+- Name: nvarchar
+- TerritoryID: int
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: BusinessEntity
+- BusinessEntityID: int
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: BusinessEntityAddress
+- BusinessEntityID: int
+- AddressID: int
+- AddressTypeID: int
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: BusinessEntityContact
+- BusinessEntityID: int
+- PersonID: int
+- ContactTypeID: int
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: ContactType
+- ContactTypeID: int
+- Name: nvarchar
+- ModifiedDate: datetime
+
+Table: CountryRegion
+- CountryRegionCode: nvarchar
+- Name: nvarchar
+- ModifiedDate: datetime
+
+Table: EmailAddress
+- BusinessEntityID: int
+- EmailAddressID: int
+- EmailAddress: nvarchar
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: Password
+- BusinessEntityID: int
+- PasswordHash: varchar
+- PasswordSalt: varchar
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Table: Person
+- BusinessEntityID: int
+- PersonType: nchar
+- NameStyle: bit
+- Title: nvarchar
+- FirstName: nvarchar
+- MiddleName: nvarchar
+- LastName: nvarchar
+- Suffix: nvarchar
+- EmailPromotion: int
+- AdditionalContactInfo: xml
+- Demographics: xml
+- rowguid: uniqueidentifier
+- ModifiedDate: datetime
+
+Row counts for Person tables:
+- PersonPhone: 19972 rows
+- PhoneNumberType: 3 rows
+- Address: 19614 rows
+- AddressType: 6 rows
+- StateProvince: 181 rows
+- BusinessEntity: 20777 rows
+- BusinessEntityAddress: 19614 rows
+- BusinessEntityContact: 909 rows
+- ContactType: 20 rows
+- CountryRegion: 238 rows
+- EmailAddress: 19972 rows
+- Password: 19972 rows
+- Person: 19972 rows
+
+Primary keys for Person tables:
+- Address: AddressID
+- AddressType: AddressTypeID
+- BusinessEntity: BusinessEntityID
+- BusinessEntityAddress: AddressID
+- BusinessEntityAddress: AddressTypeID
+- BusinessEntityAddress: BusinessEntityID
+- BusinessEntityContact: BusinessEntityID
+- BusinessEntityContact: ContactTypeID
+- BusinessEntityContact: PersonID
+- ContactType: ContactTypeID
+- CountryRegion: CountryRegionCode
+- EmailAddress: BusinessEntityID
+- EmailAddress: EmailAddressID
+- Password: BusinessEntityID
+- Person: BusinessEntityID
+- PersonPhone: BusinessEntityID
+- PersonPhone: PhoneNumber
+- PersonPhone: PhoneNumberTypeID
+- PhoneNumberType: PhoneNumberTypeID
+- StateProvince: StateProvinceID
+
+Foreign key relationships in Person:
+No foreign key relationships found.
+
+---
+Person schema data patterns and insights:
+The Person schema contains tables for individuals, addresses, contact info, and relationships. Typical patterns include:
+- Central Person table with unique identifiers and demographic info.
+- Address and contact tables linked via foreign keys.
+- Many-to-many relationships for email, phone, and address usage.
+- Row counts indicate data volume and table importance.
+- Primary and foreign keys support referential integrity and complex queries.
+This schema is ideal for customer, contact, and relationship management analytics.
